@@ -54,7 +54,7 @@ class TaskService:
         task.description = payload.description
         task.priority = payload.priority
         task.status = payload.status
-        task.due_date = datetime.datetime.fromtimestamp(payload.due_date)
+        task.due_date = datetime.datetime.strptime(payload.due_date, "%d/%m/%Y %H:%M:%S")
 
         db.commit()
         db.refresh(task)
